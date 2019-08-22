@@ -1,0 +1,36 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onRegistrationFormSubmit()">
+
+        <label>First Name</label>
+        <input type="text" placeholder="Enter First Name Here.." formControlName="firstName" class="form-control" />
+        <div *ngIf="registrationForm.get('firstName').errors  && isSubmitted">
+                <div *ngIf="registrationForm.get('firstName').hasError('required')">
+                  <span style="color: red;">Please Enter First Name.</span>
+                </div>
+                <div *ngIf="registrationForm.get('firstName').hasError('minlength')">
+                  <span style="color: red;">First Name requied atleast 3 characters.</span>
+                </div>
+                <div *ngIf="registrationForm.get('firstName').hasError('maxlength')">
+                  <span style="color: red;">First Name requied only 30 characters.</span>
+                </div>
+        </div>
+        <br>
+        <br>
+        <label>Password</label>
+            <input type="password" placeholder="Enter Password Here.." formControlName="password" class="form-control" />
+            <div *ngIf="registrationForm.get('password').errors && isSubmitted">
+                    <div *ngIf="registrationForm.get('password').hasError('required')">
+                      <span style="color: red;">Please Enter Password.</span>
+                    </div>
+                    <div *ngIf="registrationForm.get('password').hasError('minlength')">
+                      <span style="color: red;">The password requied atleast 5 characters.</span>
+                    </div>
+                    <div *ngIf="registrationForm.get('password').hasError('maxlength')">
+                      <span style="color: red;">The password requied only 12 characters.</span>
+                    </div>
+            </div>
+            <br>
+            <br>
+        <button type="submit" class="btn btn-lg btn-info">Submit</button>
+              
+
+</form>
