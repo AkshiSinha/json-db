@@ -12,8 +12,12 @@ import {emp} from '../employee.module';
   styleUrls: ['./reactive-form-component.component.scss']
 })
 export class ReactiveFormComponentComponent implements OnInit {
-
+  id:number;
+  firstName:string;
+  password:string;
+  
   SERVER_URL = "http://localhost:3000/employee";
+  
   registrationForm: FormGroup;
   isSubmitted: boolean = false;
 
@@ -43,12 +47,14 @@ export class ReactiveFormComponentComponent implements OnInit {
 
     if(this.registrationForm.valid){      
       console.log("User Registration Form Submit", this.registrationForm.value);
+
+      this.postService.enroll(this.registrationForm.value).subscribe(res =>
+        {if(res){
+          console.log(res);
+        }}); 
     }
     
 
-    this.postService.enroll(this.registrationForm.value).subscribe(res =>
-      {if(res){
-        console.log(res);
-      }}); 
+   
   }
 }

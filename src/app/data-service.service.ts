@@ -12,16 +12,16 @@ import { JsonPipe } from '@angular/common';
   providedIn: 'root'
 })
 export class DataServiceService {
-  url:'http://localhost:9191/employees/';
+  url:string='http://localhost:9191/employees/';
 
   constructor(private  httpClient: HttpClient) { }
 
-  enroll(user)
+  enroll(user:emp)
   {
     console.log(user);
     console.log(user.firstName)
     
-    return this.httpClient.post(this.url,user);
+    return this.httpClient.post<emp>(this.url,user);
 }
 }
 
